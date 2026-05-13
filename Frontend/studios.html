@@ -396,16 +396,7 @@ const awardsMovies = [
       { award: "WINNER - BEST DIRECTOR IGGFA 2025", segment: "International Grand Glory Film Awards" },
       { award: "WINNER - BEST STORY IGGFA 2025", segment: "International Grand Glory Film Awards" },
       { award: "BEST FILM BICCF 2025", segment: "Bharath International Cinema Film Festival" },
-      { award: "BEST DIRECTOR BICCF 2025", segment: "Bharath International Cinema Film Festival" },
-      { award: "BEST STORY-ORIGINAL BICCF 2025", segment: "Bharath International Cinema Film Festival" },
-      { award: "BEST CINEMATOGRAPHY BICCF 2025", segment: "Bharath International Cinema Film Festival" },
-      { award: "BEST EDITOR BICCF 2025", segment: "Bharath International Cinema Film Festival" },
-      { award: "BEST ACTOR BICCF 2025", segment: "Bharath International Cinema Film Festival" },
-      { award: "BEST FILM MBIFF 2025", segment: "Myanmar Burma International Film Festival" },
-      { award: "BEST ACTOR MBIFF 2025", segment: "Myanmar Burma International Film Festival" },
-      { award: "BEST SUPPORTING ARTIST MBIFF 2025", segment: "Myanmar Burma International Film Festival" },
-      { award: "BEST BACKGROUND SCORE MBIFF 2025", segment: "Myanmar Burma International Film Festival" },
-      { award: "GOA INTERNATIONAL FILM COMPETITION 2025", segment: "Official Selection - GIFC" }
+      { award: "BEST FILM MBIFF 2025", segment: "Myanmar Burma International Film Festival" }
     ]
   },
   {
@@ -483,6 +474,14 @@ function endCollageDrag() {
 
 function renderCollageRows() {
   if (!collageSection || collageRows.length === 0) {
+    return;
+  }
+
+  // Disable parallax animation on mobile for better performance
+  if (window.innerWidth < 768) {
+    collageRows.forEach((row) => {
+      row.style.transform = 'translate3d(0, 0, 0)';
+    });
     return;
   }
 
