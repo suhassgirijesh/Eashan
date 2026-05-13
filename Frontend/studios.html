@@ -144,7 +144,7 @@
         <div class="studio-split-copy">
           
           <h2 id="studio-split-title">Achievements</h2>
-          <center><h3>Movies</h3></center>
+          <h3 class="achievement-subtitle">Movies</h3>
           <p class="studio-split-text">Every frame is shaped with the discipline of a production house and the instinct of a storyteller, balancing speed, finish, and emotional clarity.</p>
 
           <div class="studio-split-stats">
@@ -332,23 +332,6 @@
     </footer>
   </section>
 </main>
-
-<nav class="bottom-nav" aria-label="Primary">
-  <div class="nav-container">
-    <a href="#home" class="nav-logo" aria-label="Eashan home">
-      <img src="Screenshot_2026-03-15_220940-removebg-preview.png" alt="Eashan mark">
-    </a>
-
-    <div class="nav-links">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="studios.html">Studios</a>
-      <a href="">Institute</a>
-      <a href="">Connect</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </div>
-</nav>
 
 <script>
 const revealNodes = document.querySelectorAll(".reveal");
@@ -595,13 +578,54 @@ window.addEventListener("scroll", renderCollageRows, { passive: true });
 window.addEventListener("resize", renderCollageRows);
 
 if (collageMarquee) {
-  collageMarquee.addEventListener("mousedown", startCollageDrag);
-  collageMarquee.addEventListener("touchstart", startCollageDrag, { passive: true });
-  window.addEventListener("mousemove", moveCollageDrag);
-  window.addEventListener("touchmove", moveCollageDrag, { passive: false });
-  window.addEventListener("mouseup", endCollageDrag);
-  window.addEventListener("touchend", endCollageDrag);
-  window.addEventListener("touchcancel", endCollageDrag);
+  // Native horizontal scroll for mobile - no drag
+  collageMarquee.style.overflowX = 'auto';
+  collageMarquee.style.overflowY = 'hidden';
+  collageMarquee.style.whiteSpace = 'nowrap';
+  collageMarquee.style.scrollBehavior = 'smooth';
+  collageMarquee.style.WebkitOverflowScrolling = 'touch';
+  collageMarquee.style.cursor = 'grab';
+
+  let isDown = false;
+  let startX = 0;
+  let scrollLeft = 0;
+
+  collageMarquee.addEventListener('mousedown', (e) => {
+    isDown = true;
+    collageMarquee.classList.add('is-dragging');
+    startX = e.pageX - collageMarquee.offsetLeft;
+    scrollLeft = collageMarquee.scrollLeft;
+  });
+
+  collageMarquee.addEventListener('mouseleave', () => {
+    isDown = false;
+    collageMarquee.classList.remove('is-dragging');
+  });
+
+  collageMarquee.addEventListener('mouseup', () => {
+    isDown = false;
+    collageMarquee.classList.remove('is-dragging');
+  });
+
+  collageMarquee.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - collageMarquee.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    collageMarquee.scrollLeft = scrollLeft - walk;
+  });
+
+  // Touch support
+  collageMarquee.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].pageX - collageMarquee.offsetLeft;
+    scrollLeft = collageMarquee.scrollLeft;
+  }, { passive: true });
+
+  collageMarquee.addEventListener('touchmove', (e) => {
+    const x = e.touches[0].pageX - collageMarquee.offsetLeft;
+    const walk = (x - startX) * 1.2;
+    collageMarquee.scrollLeft = scrollLeft - walk;
+  }, { passive: true });
 }
 
 if (awardsPrevButton) {

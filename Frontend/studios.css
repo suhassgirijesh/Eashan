@@ -321,6 +321,14 @@
   text-transform:uppercase;
 }
 
+.achievement-subtitle{
+  text-align:center;
+  color:var(--gold);
+  font-size:clamp(1.4rem, 3vw, 2rem);
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+}
+
 .studio-split-text{
   max-width:480px;
   color:var(--muted);
@@ -1155,6 +1163,36 @@
   .studio-split-copy{
     padding-top:42px;
     gap:22px;
+    align-items:center;
+    text-align:center;
+  }
+
+  .studio-split-copy h2{
+    text-align:center;
+  }
+
+  .achievement-subtitle{
+    text-align:center;
+  }
+
+  .studio-split-text{
+    max-width:100%;
+    text-align:center;
+  }
+
+  .studio-split-stats{
+    align-items:center;
+    text-align:center;
+  }
+
+  .studio-split-stat{
+    align-items:center;
+    text-align:center;
+  }
+
+  .studio-split-stat p{
+    max-width:100%;
+    text-align:center;
   }
 
   .studio-split-scroll{
@@ -1250,37 +1288,53 @@
   .studio-collage-heading{
     width:min(100% - 24px, 100%);
     margin-bottom:24px;
+    text-align:center;
   }
 
   .studio-collage-marquee{
-    gap:16px;
-    overflow-x:auto;
+    overflow-x:auto !important;
     overflow-y:hidden;
+    white-space:nowrap;
+    scroll-behavior:smooth;
     -webkit-overflow-scrolling:touch;
-    cursor:default;
+    cursor:grab;
+    padding-bottom:8px;
   }
 
-  .studio-collage-marquee.is-dragging{
-    cursor:default;
+  .studio-collage-marquee::-webkit-scrollbar{
+    height:6px;
+  }
+
+  .studio-collage-marquee::-webkit-scrollbar-track{
+    background:rgba(255,255,255,0.05);
+    border-radius:999px;
+  }
+
+  .studio-collage-marquee::-webkit-scrollbar-thumb{
+    background:rgba(212,175,55,0.4);
+    border-radius:999px;
   }
 
   .studio-collage-fade{
-    width:42px;
-  }
-
-  .studio-collage-track{
-    gap:16px;
-    padding:0 4px;
-  }
-
-  .studio-collage-track img{
-    width:200px;
-    height:280px;
-    border-radius:18px;
+    display:none;
   }
 
   .studio-collage-row{
+    display:inline-flex;
     transition:none;
+  }
+
+  .studio-collage-track{
+    display:inline-flex;
+    gap:14px;
+    padding:0 16px;
+  }
+
+  .studio-collage-track img{
+    width:180px;
+    height:250px;
+    border-radius:16px;
+    flex-shrink:0;
   }
 
   .studio-awards-section{
