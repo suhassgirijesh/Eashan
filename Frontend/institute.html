@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eashan Institute</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="institute.css">
+</head>
+<body class="institute-page">
+<a href="index.html" class="return-home institute-return-home">Return to Eashan</a>
+<header class="inner-hero institute-hero" id="institute-home">
+  <nav class="inner-nav inner-nav-blue">
+    <a href="index.html" class="inner-nav-brand">
+      <img src="Screenshot_2026-03-15_220940-removebg-preview.png" alt="Eashan logo">
+    </a>
+    <div class="inner-nav-links">
+      <a href="#institute-home">Home</a>
+      <a href="#student-reviews">Student Reviews</a>
+      <a href="#student-works">Student Works</a>
+    </div>
+  </nav>
+
+  <section class="studio-hero-banner"></section>
+
+  <div class="inner-hero-shell reveal active">
+    <p class="section-label institute-label">Eashan Institute</p>
+    <h1 class="inner-hero-title institute-title">Learning filmmaking with practice, output, and confidence.</h1>
+    <p class="inner-hero-text institute-text">A white and light-blue learning environment built for students who want to move from interest to real screen-ready work through guidance, review, and hands-on creation.</p>
+    <a href="#student-works" class="hero-button institute-button">View Student Works</a>
+  </div>
+</header>
+
+<main class="inner-page-shell">
+  <section class="review-section reveal" id="student-reviews">
+    <div class="inner-section-head institute-head">
+      <p class="section-label institute-label">Student Reviews</p>
+      <h2>What students say after the work starts speaking.</h2>
+    </div>
+
+    <div class="review-grid review-grid-blue">
+      <article class="review-card review-card-blue">
+        <p>"The best part was that we were not only taught software. We were taught why a shot works and how to shape a sequence."</p>
+        <span>Editing student</span>
+      </article>
+      <article class="review-card review-card-blue">
+        <p>"The feedback was direct and practical. Every class pushed us to improve our actual output instead of just taking notes."</p>
+        <span>Direction workshop student</span>
+      </article>
+      <article class="review-card review-card-blue">
+        <p>"I joined to learn filmmaking basics and left with work I could confidently show to others."</p>
+        <span>Short film batch student</span>
+      </article>
+    </div>
+  </section>
+
+  <section class="student-work-section reveal" id="student-works">
+    <div class="inner-section-head institute-head">
+      <p class="section-label institute-label">Student Works</p>
+      <h2>Projects shaped through learning, critique, and execution.</h2>
+      <p>Every batch is encouraged to create, not just observe. These work blocks represent the kind of applied practice the institute is built around.</p>
+    </div>
+
+    <div class="student-work-grid">
+      <article class="student-work-card">
+        <div class="student-work-visual">
+          <img src="https://www.google.com/imgres?q=short%20film%20lab&imgurl=https%3A%2F%2Fi0.wp.com%2Ffilmtalentacademy.com%2Fwp-content%2Fuploads%2F2025%2F03%2F2693209121.jpg%3Fresize%3D450%252C300%26ssl%3D1&imgrefurl=https%3A%2F%2Ffilmtalentacademy.com%2Fshortfilmlab%2F&docid=UjEhzkkfTAZ35M&tbnid=kB9SWVTGINi3WM&vet=12ahUKEwiX7OTW7KKTAxUKT2cHHZVIGgEQnPAOegQIKxAB..i&w=450&h=300&hcb=2&ved=2ahUKEwiX7OTW7KKTAxUKT2cHHZVIGgEQnPAOegQIKxAB" alt="Student project visual">
+        </div>
+        <div class="student-work-copy">
+          <h3>Short Film Lab</h3>
+          <p>Students move from scripting and blocking to edit structure and final presentation as a complete storytelling exercise.</p>
+        </div>
+      </article>
+
+      <article class="student-work-card">
+        <div class="student-work-visual">
+          <img src="https://www.google.com/imgres?q=short%20film%20lab&imgurl=https%3A%2F%2Fi0.wp.com%2Ffilmtalentacademy.com%2Fwp-content%2Fuploads%2F2025%2F03%2F2693209121.jpg%3Fresize%3D450%252C300%26ssl%3D1&imgrefurl=https%3A%2F%2Ffilmtalentacademy.com%2Fshortfilmlab%2F&docid=UjEhzkkfTAZ35M&tbnid=kB9SWVTGINi3WM&vet=12ahUKEwiX7OTW7KKTAxUKT2cHHZVIGgEQnPAOegQIKxAB..i&w=450&h=300&hcb=2&ved=2ahUKEwiX7OTW7KKTAxUKT2cHHZVIGgEQnPAOegQIKxAB" alt="Student editing work visual">
+        </div>
+        <div class="student-work-copy">
+          <h3>Editing Practice Output</h3>
+          <p>Hands-on edit sessions focused on pacing, cuts, transitions, continuity, and emotional rhythm.</p>
+        </div>
+      </article>
+
+      <article class="student-work-card student-work-wide">
+        <div class="student-work-copy">
+          <h3>Creative Growth Track</h3>
+          <p>Students learn to present ideas, accept critique, iterate on their work, and turn rough creative instincts into polished visual communication.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<script>
+const revealNodes = document.querySelectorAll(".reveal");
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("active");
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.18,
+  rootMargin: "0px 0px -50px 0px"
+});
+
+revealNodes.forEach((node) => revealObserver.observe(node));
+</script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eashan Studio Works</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="studios.css">
+<link rel="stylesheet" href="service-detail.css">
+</head>
+<body class="studio-page service-directory-page">
+<a href="index.html" class="return-home studio-return-home">Return to Eashan</a>
+
+<header class="inner-hero studio-hero service-directory-hero">
+  <div class="studio-hero-overlay"></div>
+  <div class="studio-hero-grain"></div>
+  <div class="studio-hero-content reveal active">
+    <p class="section-label">Studio Works</p>
+    <h1>Every Format, One Portfolio</h1>
+    <p class="studio-hero-subtitle">Browse separate pages for each kind of work Eashan Studio delivers.</p>
+  </div>
+</header>
+
+<nav class="inner-nav studio-bottom-nav">
+  <a href="index.html" class="inner-nav-brand">
+    <img src="Screenshot_2026-03-15_220940-removebg-preview.png" alt="Eashan logo">
+  </a>
+  <div class="inner-nav-links">
+    <a href="studios.html">Home</a>
+    <div class="nav-dropdown">
+      <a href="services.html" class="nav-dropdown-toggle">Services</a>
+      <div class="nav-dropdown-menu" aria-label="Services menu">
+        <div class="nav-dropdown-group">
+          <a href="services.html#production-services" class="nav-dropdown-label">Production</a>
+          <a href="film-shoot.html">Film Shoot</a>
+          <a href="short-film-shoot.html">Short Film Shoot</a>
+          <a href="ad-shoot.html">Ad Shoot</a>
+          <a href="realestate-shoot.html">Realestate Shoot</a>
+          <a href="podcast-shoot.html">Podcast Shoot</a>
+          <a href="cinematic-pre-wedding-shoot.html">Pre-Wedding Shoot</a>
+        </div>
+        <div class="nav-dropdown-group">
+          <a href="services.html#post-production-services" class="nav-dropdown-label">Post Production</a>
+          <a href="editing.html">Editing</a>
+          <a href="sfx.html">Sfx</a>
+          <a href="dubbing.html">Dubbing</a>
+          <a href="folley.html">Folley</a>
+          <a href="visual-effects.html">Visual Effects</a>
+          <a href="title-animation.html">Title Animation</a>
+          <a href="color-correction.html">Color Correction</a>
+          <a href="di.html">DI</a>
+          <a href="cinematic-reel.html">Cinematic Reel</a>
+          <a href="conceptual-video-editing.html">Conceptual Editing</a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-dropdown">
+      <a href="work.html" class="nav-dropdown-toggle">Works</a>
+      <div class="nav-dropdown-menu nav-dropdown-menu-works" aria-label="Works menu">
+        <div class="nav-dropdown-group nav-dropdown-group-full">
+          <a href="work.html#work-categories" class="nav-dropdown-label">Work Categories</a>
+          <a href="work-shoot.html">Shoot</a>
+          <a href="work-short-films.html">Short Films</a>
+          <a href="work-album-song.html">Album Song</a>
+        </div>
+      </div>
+    </div>
+    <a href="reviews.html">Reviews</a>
+    <a href="studios.html#contact">Contact</a>
+  </div>
+</nav>
+
+<main class="inner-page-shell">
+  <section class="service-directory-section reveal" id="work-categories">
+    <div class="inner-section-head service-directory-head">
+      <p class="section-label">Works</p>
+      <h2>Formats We Shoot, Craft, Edit, And Deliver.</h2>
+      <p>Open any category to view its own dedicated page.</p>
+    </div>
+
+    <div class="service-directory-grid">
+      <a href="work-shoot.html" class="service-directory-card">
+        <img src="https://picsum.photos/seed/work-shoot/800/520" alt="Shoot work category">
+        <span>01</span>
+        <h3>Shoot</h3>
+        <p>Production-led visual work captured for brand, story, and screen.</p>
+      </a>
+      <a href="work-short-films.html" class="service-directory-card">
+        <img src="https://picsum.photos/seed/work-short-films/800/520" alt="Short films work category">
+        <span>02</span>
+        <h3>Short Films</h3>
+        <p>Compact narrative cinema with strong editorial and visual identity.</p>
+      </a>
+      <a href="work-album-song.html" class="service-directory-card">
+        <img src="https://picsum.photos/seed/work-album-song/800/520" alt="Album song work category">
+        <span>03</span>
+        <h3>Album Song</h3>
+        <p>Song-based storytelling work shaped for artists, mood, and recall.</p>
+      </a>
+    </div>
+  </section>
+</main>
+
+<script>
+const revealNodes = document.querySelectorAll(".reveal");
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("active");
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.18,
+  rootMargin: "0px 0px -50px 0px"
+});
+
+revealNodes.forEach((node) => revealObserver.observe(node));
+
+const navDropdowns = document.querySelectorAll(".nav-dropdown");
+
+navDropdowns.forEach((dropdown) => {
+  const toggle = dropdown.querySelector(".nav-dropdown-toggle");
+  const links = dropdown.querySelectorAll(".nav-dropdown-menu a");
+
+  if (!toggle) {
+    return;
+  }
+
+  toggle.addEventListener("click", (event) => {
+    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      return;
+    }
+
+    event.preventDefault();
+    const shouldOpen = !dropdown.classList.contains("is-open");
+    navDropdowns.forEach((item) => item.classList.remove("is-open"));
+    if (shouldOpen) {
+      dropdown.classList.add("is-open");
+    }
+  });
+
+  links.forEach((link) => {
+    link.addEventListener("click", () => {
+      dropdown.classList.remove("is-open");
+    });
+  });
+});
+
+document.addEventListener("click", (event) => {
+  navDropdowns.forEach((dropdown) => {
+    if (!dropdown.contains(event.target)) {
+      dropdown.classList.remove("is-open");
+    }
+  });
+});
+</script>
+</body>
+</html>
